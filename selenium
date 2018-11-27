@@ -1,0 +1,65 @@
+namespace SoftwareTestProject
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://localhost:63584/Default.aspx";
+            driver.FindElement(By.Id("txtId")).SendKeys("");
+            driver.FindElement(By.Id("Button2")).Click();
+            IWebElement ReqFname = driver.FindElement(By.Id("RequiredFieldValidator1"));
+            string text = ReqFname.Text;
+            Assert.AreEqual("ID IS REQUIRED", text);
+            driver.Close();
+            driver.Quit();
+
+        }
+    }
+}
+
+namespace SoftwareTestProject
+{
+    [TestClass]
+    public class UnitTest2
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://localhost:63584/Default.aspx";
+            driver.FindElement(By.Id("txtPhone")).SendKeys("213123");
+            driver.FindElement(By.Id("Button2")).Click();
+            IWebElement ReqFname = driver.FindElement(By.Id("RegularExpressionValidator1"));
+            string text = ReqFname.Text;
+            Assert.AreEqual("Enter the Correct Phone Number", text);
+            driver.Close();
+            driver.Quit();
+        }
+    }
+}
+
+
+namespace SoftwareTestProject
+{
+    [TestClass]
+    public class UnitTest3
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://localhost:63584/Default.aspx";
+            driver.FindElement(By.Id("txtemail")).SendKeys("asdasd");
+            driver.FindElement(By.Id("Button2")).Click();
+            IWebElement ReqFname = driver.FindElement(By.Id("RegularExpressionValidator2"));
+            string text = ReqFname.Text;
+            Assert.AreEqual("Enter Email ID in Correct Format", text);
+            driver.Close();
+            driver.Quit();
+        }
+    }
+}
+
